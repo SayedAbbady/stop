@@ -625,7 +625,8 @@ class HomeController extends Controller
 
             $totalDuration = $finishTime - $startTime;
             $newTime = $totalDuration * 1000;
-            $de .= "
+            if ($newTime > 1000) {
+                $de .= "
             <script>
             var ss_".$item->id." =  setInterval(() => {
                  $('.popup-main-class').css(
@@ -636,6 +637,8 @@ class HomeController extends Controller
                                     }, ".$newTime.");
             </script>
             ";
+            }
+
 
         }
 
