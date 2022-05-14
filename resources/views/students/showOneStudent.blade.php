@@ -89,7 +89,7 @@
                             <b>Date</b>: {{$item->date}}
                           </div>
                           <div class="col-md-6">
-                            <b>Time</b>: {{$item->time}}
+                            <b>Time</b>: {{ Carbon\Carbon::parse($item->time)->isoFormat('hh:mm A')}}
                           </div>
                           <div class="col-md-6">
                             <b>Added By</b>: {{App\User::select('name')->where('id',$item->admin_id)->first()->name}}

@@ -25,6 +25,7 @@
 		}
 	</style>
 
+
 </head>
 
 <body>
@@ -37,6 +38,29 @@
 
 			<main class="content">
 				<div class="container-fluid p-0">
+
+
+
+					<div class="popup-main-class">
+						<div class="popup-dialog">
+							<div class="row">
+								<div class="col-12 mb-4">
+									<img src="{{asset('assets/img/alarms.png')}}" alt="">
+								</div>
+								<div class="col-md-6 text-right"><b>Date:</b> <span id="popup-date">05-05-2022</span></div>
+								<div class="col-md-6 text-left"><b>Time:</b> <span id="popup-time">10:20 PM</span></div>
+								<div class="col-12 mt-2 mb-4"><b>Note:</b> <span id="popup-note">This note added by Sayed Khaled as alarm notes for me after another rime thanks god</span></div>
+								<div class="col-12">
+									<button class="btn btn-primary">Got it</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+
+
 					@yield('content')
 				</div>
 			</main>
@@ -75,6 +99,8 @@
 	@yield('scripts')
 	<script src="{{asset('assets/custom/sweetalert.js')}}"></script>
 	<script src="{{asset('assets/custom/index.js')}}"></script>
+	<script src="{{asset('assets/custom/popup.js')}}"></script>
+
 </body>
 
 </html>

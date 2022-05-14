@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/report/ajax-data','HomeController@report_ajax');
 
 
+    Route::get('/popup','HomeController@popup');
 
 
     Route::post('/settings/roles-assignment')->name('settings');

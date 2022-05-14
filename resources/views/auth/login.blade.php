@@ -22,28 +22,24 @@
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
 
-						<div class="d-flex justify-content-center mt-4">
-                            <div>
-                                <img src="https://www.eaalim.com/wp-content/uploads/2021/01/cropped-logo_new1-192x192.png" alt="Charles Hall" class="img-fluid " width="80" height="80" />
-                            </div>
-                            <div class="mt-2 ">
-                                <h1 class="h2 ">Welcome to eaalim</h1>
-                                <p class="lead">
-                                    Sign in to your account to continue
-                                </p>
-                            </div>
-						</div>
+
 
 						<div class="card">
-							<div class="card-body">
+							<div class="d-flex justify-content-center mt-4">
+								<div>
+									<img src="https://www.eaalim.com/wp-content/uploads/2021/01/cropped-logo_new1-192x192.png" alt="Charles Hall" class="img-fluid " width="80" height="80" />
+
+								</div>
+
+
+							</div>
+							<div class="card-body pt-0">
 								<div class="m-sm-4">
-									<div class="text-center">
-										{{-- <img src="https://www.eaalim.com/wp-content/uploads/2021/01/cropped-logo_new1-192x192.png" alt="Charles Hall" class="img-fluid " width="150" height="150" /> --}}
-									</div>
+
 									<form method="POST"  action="{{ route('login') }}">
                                            @csrf
 										<div class="mb-3">
-											<label class="form-label">Email</label>
+											<label class="form-label"><b>Email</b></label>
                                             <input id="email" type="email" class="form-control-lg form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                             @error('email')
@@ -53,7 +49,7 @@
                                             @enderror
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Password</label>
+											<label class="form-label"><b>Password</b></label>
 											
                                             <input id="password" type="password" class="form-control-lg form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 

@@ -610,6 +610,41 @@ class HomeController extends Controller
 
 
     }
+
+    public function popup (Request $request)
+    {
+        $de = '';
+
+        $today = Carbon::now()->format('Y-m-d');
+
+        $remember = Remember::select('id','time')->where('date',$today)->get();
+
+        foreach ($remember as $item) {
+            $startTime = Carbon::parse(now('Africa/Cairo'))->timestamp;
+            $finishTime = Carbon::parse($item->time)->timestamp;
+
+            $totalDuration = $finishTime - $startTime;
+            $newTime = $totalDuration * 1000;
+            $de .= "
+            <script>
+            var ss_".$item->id." =  setInterval(() => {
+                 $('.popup-main-class').css(
+                     'display' , 'flex'
+                 );
+//                console.log('ss_".$item->id."')
+                                    clearInterval(ss_".$item->id.")    ;
+                                    }, ".$newTime.");
+            </script>
+            ";
+
+        }
+
+
+            return response()->json([
+                "status"    => '1',
+                "msg"       => $de,
+            ]);
+    }
 }
 
 
