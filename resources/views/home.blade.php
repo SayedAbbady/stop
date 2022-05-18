@@ -154,7 +154,7 @@
 														</td>
 														
 														<td class="">
-														{{$user->time}}
+														{{Carbon\Carbon::parse($user->time)->isoFormat('hh:mm A')}}
 														</td>
 														<td class="">
 																<a href="{{url('/history?type=user&id='.$user->admin->id.'')}}">

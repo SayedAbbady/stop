@@ -297,7 +297,9 @@ class StudentsController extends Controller
     public function edit($id)
     {
 
-         $user = newStudent::where('id',$id)->with('children','remember_students')->get()->first();
+         $user = newStudent::where('id',$id)->with(['children','remember_students' => function ($query) {
+             $query->where('action',null);
+         }])->get()->first();
         $teachers = Teacher::all();
         $cat = Category::all();
         return view('students.editstudents',[
@@ -366,7 +368,8 @@ class StudentsController extends Controller
             if ($user){
 
                 $counti = $request->countChoosew;
-                students::where('parent_id',$request->parent_id)->delete();
+
+                students::where('parent_id','=',$request->parent_id)->forceDelete();
 
                 for ($i=0; $i < $counti; $i++) {
 
@@ -385,7 +388,7 @@ class StudentsController extends Controller
                     Remember::where([
                         ['student_id','=',$request->parent_id],
                         ['action','=',null]
-                    ])->delete();
+                    ])->forceDelete();
 
                     Remember::create([
                         "date"          => $request->alarm_date,

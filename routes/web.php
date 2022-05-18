@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/alarms/got-it', 'RememberController@gotitshow')->name('alarms.gotit');
     Route::get('/alarms/no-action', 'RememberController@noaction')->name('alarms.noaction');
     Route::get('/gotit', 'RememberController@gotit');
+    Route::get('/gotit-one/{id}', 'RememberController@gotit_one')->name('alarm.gotit.one');
 
     // get graph data
     Route::get('/graph', 'HomeController@get_graph');

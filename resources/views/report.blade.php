@@ -64,9 +64,15 @@
             </div>
           </div>
 
-          <div class="card" >
-            <div class="card-body" id="report-result-fetch-data"></div>
+
+          <div id="report-result-Static">
+
           </div>
+
+          <div id="report-result-fetch-data">
+
+          </div>
+
 
 
         </div>

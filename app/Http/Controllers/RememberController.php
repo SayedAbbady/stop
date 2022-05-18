@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\newStudent;
 use App\Models\Remember;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,21 @@ class RememberController extends Controller
                 "status"    => '0',
                 "msg"       => "something is wrong, please try again later"
             ]);
+        }
+    }
+
+    public function gotit_one($id)
+    {
+        $remember = Remember::where('id',$id)->update([
+            'action'=>'Got it'
+        ]);
+
+        $ss = Remember::select('student_id')->where('id',$id)->get()->first()->student_id;
+
+        if ($remember) {
+            $students_id = newStudent::select('id')->where('id',$ss)->get()->first()->id;
+
+            return redirect()->route('students.show',$students_id);
         }
     }
 }

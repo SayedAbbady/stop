@@ -15,11 +15,11 @@ class admins_role extends Seeder
     public function run()
     {
         
-        // $developer_user = User::create([
-        //     'name' => "Sayed Khaled",
-        //     'email' => "sayed1@gmail.com",
-        //     'password' => Hash::make("87654321"),
-        // ]);
+         $developer_user = User::create([
+             'name' => "Sayed Khaled",
+             'email' => "sayed1@gmail.com",
+             'password' => Hash::make("123456789"),
+         ]);
         // $developer = Role::create([
         //     'name' => 'developer',
         //     'display_name' => 'Developer role', // optional

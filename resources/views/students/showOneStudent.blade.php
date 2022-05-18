@@ -39,9 +39,9 @@
                         @elseif ($user->status == '3')
                           <a href="javascript:;" class="btn btn-warning" style="padding:6px 60px;"> <i class="align-middle" data-feather="clock"></i> Set Alarm </a>
                         @elseif ($user->status == '4')
-                          <a href="javascript:;" class="btn btn-dark" style="padding:6px 60px;"> <i class="align-middle" data-feather="wifi-off"></i> Contact and no answer </a>
+                          <a href="javascript:;" class="btn btn-dark" style="padding:6px 60px;"> <i class="align-middle" data-feather="wifi-off"></i> Contact & no answer </a>
                         @else
-                          <a href="javascript:;" class="btn btn-success" style="padding:6px 60px;"> <i class="align-middle" data-feather="check"></i> Contacted</a> 
+                          <a href="javascript:;" class="btn btn-success" style="padding:6px 60px;"> <i class="align-middle" data-feather="check"></i> Contact & answer</a>
 
                         @endif
                         <hr>

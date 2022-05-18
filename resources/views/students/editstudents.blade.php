@@ -30,17 +30,19 @@
                     <small id="parent_nameErrors" class="form-text text-muted errorClass"></small>
                   </div>
                   <div class="form-group">
+                    <label for="" class="col-12"><b>Children</b></label>
                     @foreach ($user->children as $item)
                     <div class="row QDnDDeletew">
+                      <hr class="col-8 offset-2">
+                      <botton class="iconDelete" data-toggle="tooltip" data-placement="bottom" title="Delete">x</botton>
 
-                      <label for="" class="col-12"><b>Children</b></label>
                       <div class="col-md-4">
                         <input type="text" name="student[]" placeholder="Child name" class="user_ad form-control" value="{{$item->name}}" >
                         <small id="student0Errors" class="form-text text-muted errorClass"></small>
                       </div>
                       <div class="col-md-4">
                         <select name="teacher[]" id="teacher_selecet" class="user_ad form-control" title="Select Teacher ">
-                          
+
                           @foreach ($teachers as $teacher)
                               <option value="{{$teacher->id}}" {{($teacher->id == $item->teacher_id)?'selected':''}}>{{$teacher->name}}</option>
                           @endforeach
@@ -71,9 +73,9 @@
                     <label for=""><b>Status</b></label>
                     <select name="status" id="status_input" class="form-control">
                       <option value="1" {{($user->status == "1")?'selected':''}}>No contact</option>
-                      <option value="2" {{($user->status == "2")?'selected':''}}>Contact</option>
+                      <option value="2" {{($user->status == "2")?'selected':''}}>Contact & answer</option>
                       <option value="3" {{($user->status == "3")?'selected':''}}>Alarm</option>
-                      <option value="4" {{($user->status == "4")?'selected':''}}>Contact and no answer</option>
+                      <option value="4" {{($user->status == "4")?'selected':''}}>Contact & no answer</option>
                     </select>
                     <small id="statusErrors" class="form-text text-muted errorClass"></small>
                   </div>
@@ -141,5 +143,18 @@
     </div>
     
   </div>
+
+@endsection
+
+
+@section('scripts')
+  <script>
+      $(".iconDelete").on("click",function () {
+
+          $(this).parent().fadeOut(500, function(){
+              $(this).remove()
+          });
+      });
+  </script>
 @endsection
 @endpermission

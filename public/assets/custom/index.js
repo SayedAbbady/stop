@@ -379,7 +379,24 @@ $(function () {
           }, // before
           success: function (data) {
             if (data.status == "1") {
-              $('#report-result-fetch-data').html(data.msg);
+              $('#report-result-fetch-data').html(`
+              
+              <div class="card" >
+                <div class="card-body" id="">
+              ` + data.msg + ` 
+                </div>
+              </div>
+              
+              `);
+              $('#report-result-Static').html(`
+              
+              <div class="card" >
+                <div class="card-body" id="">
+              ` + data.total + ` 
+                </div>
+              </div>
+              
+              `);
             } else {
               Swal.fire({
                 title: 'Error',

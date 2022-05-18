@@ -19,9 +19,9 @@
                   <select name="status" class="form-control" id="">
                     <option value="all">All</option>
                     <option value="1" {{($status_id == "1")?'selected':''}}>No contact</option>
-                    <option value="2" {{($status_id == "2")?'selected':''}}>Contact</option>
+                    <option value="2" {{($status_id == "2")?'selected':''}}>Contact & answer</option>
                     <option value="3" {{($status_id == "3")?'selected':''}}>Alarm</option>
-                    <option value="4" {{($status_id == "4")?'selected':''}}>Contact and no answer</option>
+                    <option value="4" {{($status_id == "4")?'selected':''}}>Contact & no answer</option>
                   </select>
                 </form>
               </div>
@@ -64,7 +64,7 @@
                             @elseif ($user->status == '4')
                               <a href="{{route('students.show',$user->id)}}" target="_blank" class="btn btn-secondary" style="padding:6px 60px;"> <i class="align-middle" data-feather="wifi-off"></i> Contact and no answer </a>
                             @else
-                              <a href="{{route('students.show',$user->id)}}" target="_blank" class="btn btn-success" style="padding:6px 60px;"> <i class="align-middle" data-feather="check"></i> Contacted</a> 
+                              <a href="{{route('students.show',$user->id)}}" target="_blank" class="btn btn-success" style="padding:6px 60px;"> <i class="align-middle" data-feather="check"></i> Contact & answer</a>
 
                             @endif
                             

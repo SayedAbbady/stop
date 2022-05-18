@@ -51,7 +51,7 @@
                           if ($user[0]->isAbleTo($item->name)) {echo 'checked';} else {echo "";}
                       @endphp
                       class="form-check-input" name="role[]" id="exampleCheck{{$key}}">
-                      <label class="form-check-label" for="exampleCheck{{$key}}">{{ucwords($item->display_name)}}</label>
+                      <label class="form-check-label" for="exampleCheck{{$key}}">{!! $item->display_name !!}</label>
 
                     </div>
                   </div>

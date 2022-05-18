@@ -341,13 +341,13 @@ class HomeController extends Controller
                     $bb = $val['attributes'][$attribute];
                     switch ($bb) {
                     case "2":
-                        $bb = "Contact";
+                        $bb = "Contact & answer";
                         break;
                     case "3":
                         $bb = "Alarm";
                         break;
                     case "4":
-                        $bb = "Contact and no answer";
+                        $bb = "Contact & no answer";
                         break;
 
                     default:
@@ -533,9 +533,8 @@ class HomeController extends Controller
                 }
 
 
-
             $de .= '
-            </tbody>
+                </tbody>
                 </table>
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -587,13 +586,107 @@ class HomeController extends Controller
               });
             </script>
             ";
+            // end Report record
 
+
+
+            // Start table of total and status and changes in categories
+
+
+            $rr = Activity::with('subject','causer')
+               ->whereBetween('created_at',[$date1,$date2])
+               ->where([
+                ['causer_id','=',$request->user],
+                ['description','=','updated'],
+                ['log_name','=','Students']])
+               ->get();
+            $noContact=0;
+            $contactAnswer=0;
+            $contactNoAnswer=0;
+            $alarm=0;
+            $stop=0;
+            $trial=0;
+            $blacklist=0;
+
+            foreach($rr as $status) {
+                foreach ($status->properties['attributes'] as $key=>$obee) {
+
+                if ($key == 'type') {
+                    switch ($obee) {
+                        case "1":
+                            $stop++;
+                            break;
+                        case "2":
+                            $trial++;
+                            break;
+                        case "3":
+                            $blacklist++;
+                            break;
+
+                        default:
+                            "error";
+                    }
+                } else if ($key == 'status') {
+                    switch ($obee) {
+                        case "2":
+                            $contactAnswer++;
+                            break;
+                        case "3":
+                            $alarm++;
+                            break;
+                        case "4":
+                            $contactNoAnswer++;
+                            break;
+
+                        default:
+                            $noContact++;
+                    }
+                }
+
+
+            }
+
+            }
+
+            $totalNumber = $contactAnswer + $alarm + $contactNoAnswer;
+
+            $total = '';
+
+            $total .= '
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Total</th>
+                      <th scope="col">Contact & answer</th>
+                      <th scope="col">Alarm</th>
+                      <th scope="col">Contact & no answer</th>
+                      <th scope="col">To Trial</th>
+                      <th scope="col">To Stop</th>
+                      <th scope="col">To Black list</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">-</th>
+                      <td>'. $totalNumber .'</td>
+                      <td>'.$contactAnswer.'</td>
+                      <td>'.$alarm.'</td>
+                      <td>'.$contactNoAnswer.'</td>
+                      <td>'.$trial.'</td>
+                      <td>'.$stop.'</td>
+                      <td>'.$blacklist.'</td>
+                    </tr>
+                  </tbody>
+                </table>
+            ';
 
 
 
             return response()->json([
                 "status"    => '1',
                 "msg"       => $de,
+                "total"     => $total
             ]);
 
 
@@ -617,7 +710,7 @@ class HomeController extends Controller
 
         $today = Carbon::now()->format('Y-m-d');
 
-        $remember = Remember::select('id','time')->where('date',$today)->get();
+        $remember = Remember::where('date',$today)->get();
 
         foreach ($remember as $item) {
             $startTime = Carbon::parse(now('Africa/Cairo'))->timestamp;
@@ -628,13 +721,32 @@ class HomeController extends Controller
             if ($newTime > 1000) {
                 $de .= "
             <script>
+            var x = new Audio($('#soundGood').data('sound'));
             var ss_".$item->id." =  setInterval(() => {
+                x.play();
                  $('.popup-main-class').css(
                      'display' , 'flex'
-                 );
-//                console.log('ss_".$item->id."')
-                                    clearInterval(ss_".$item->id.")    ;
-                                    }, ".$newTime.");
+                 ).html(`
+                    <div class='popup-dialog'>
+							<div class='row'>
+								<div class='col-12 mb-4'>
+									<img src='".asset('assets/img/alarms.png')."' >
+								</div>
+								<div class='col-md-6 text-right'><b>Date:</b> ".$item->date."</div>
+								<div class='col-md-6 text-left'><b>Time:</b> ".Carbon::parse($item->time)->isoFormat('hh:mm A')."</div>
+								<div class='col-12 mt-2 mb-4'><b>Note:</b> ". $item->note ."</div>
+								<div class='col-12'>
+									<a href=".route('alarm.gotit.one',$item->id)." class='btn btn-success'>Got it</a>
+									<a href=".route('students.edit',$item->student_id)." class='btn btn-primary'>Remember me later</a>
+								</div>
+							</div>
+						</div>
+                 `);
+
+                                    clearInterval(ss_".$item->id.");
+                                    }, ".$newTime.")";
+
+                $de.="
             </script>
             ";
             }
@@ -648,6 +760,8 @@ class HomeController extends Controller
                 "msg"       => $de,
             ]);
     }
+
+
 }
 
 

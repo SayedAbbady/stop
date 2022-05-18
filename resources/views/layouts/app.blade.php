@@ -23,6 +23,9 @@
 		.errorClass {
 			color: #dc3545!important;
 		}
+		label span {
+			font-weight: bold;
+		}
 	</style>
 
 
@@ -38,10 +41,11 @@
 
 			<main class="content">
 				<div class="container-fluid p-0">
-
+					<audio id="soundGood" data-sound="{{asset('assets/mixkit.wav')}}"></audio>
 
 
 					<div class="popup-main-class">
+
 						<div class="popup-dialog">
 							<div class="row">
 								<div class="col-12 mb-4">
@@ -54,8 +58,8 @@
 									<button class="btn btn-primary">Got it</button>
 								</div>
 							</div>
-
 						</div>
+
 					</div>
 
 
@@ -93,8 +97,8 @@
 		CKEDITOR.replace('result_info');
 
 	  // CKEDITOR.replace('info');
-	  
-		
+
+
 	</script>
 	@yield('scripts')
 	<script src="{{asset('assets/custom/sweetalert.js')}}"></script>
