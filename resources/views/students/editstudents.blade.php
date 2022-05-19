@@ -54,12 +54,22 @@
                         <small id="resone0Errors" class="form-text text-muted errorClass"></small>
                       </div>
                       <div class="col-md-6">
-                        <input type="date" name="lastdate[]" class="user_ad form-control" id="" value="{{$item->lastsession}}">
-                        <small id="lastdate.0Errors" class="form-text text-muted errorClass"></small>
+                        <div class="row">
+                          <div class="col-3 mt-2"><label for=""><b> last session</b></label></div>
+                          <div class="col-9">
+                            <input type="date" name="lastdate[]" class="user_ad form-control" id="" value="{{$item->lastsession}}">
+                            <small id="lastdate.0Errors" class="form-text text-muted errorClass"></small>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-6">
-                        <input type="text" name="hourrate[]" placeholder="Hour rate" class="user_ad form-control" id="" value="{{$item->hourrate}}">
-                        <small id="hourrate.0Errors" class="form-text text-muted errorClass"></small>
+                        <div class="row">
+                          <div class="col-3 mt-2"><label for=""><b>Hour rate</b></label></div>
+                          <div class="col-9">
+                            <input type="text" name="hourrate[]" placeholder="Hour rate" class="user_ad form-control" id="" value="{{$item->hourrate}}">
+                            <small id="hourrate.0Errors" class="form-text text-muted errorClass"></small>
+                          </div>
+                        </div>
                       </div>
 
                     </div>

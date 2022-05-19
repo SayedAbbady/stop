@@ -39,7 +39,7 @@
 								<span class="indicator">{{$notifi->count()}}</span>
 							</div>
 						</a>
-						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" style="min-width: 21rem" aria-labelledby="alertsDropdown">
 							<div class="dropdown-menu-header">
 								{{$notifi->count()}} New alarm/s
 							</div>
@@ -56,7 +56,7 @@
 														{{$item->students_remember->parent_name}}
 													</div>
 													<div class="text-muted small mt-1">
-														Added by: <span class="text-primary"> {{$item->admin->name}} ({{$item->date}} - {{$item->time}})</span>
+														Added by:<span class="text-primary"> {{$item->admin->name}} ({{$item->date}} - {{ Carbon\Carbon::parse($item->time)->isoFormat('hh:mm A')}})</span>
 													</div>
 													<div class="text-muted small mt-1">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans()}}</div>
 												</div>

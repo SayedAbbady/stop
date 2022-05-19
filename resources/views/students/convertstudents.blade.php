@@ -50,12 +50,22 @@
                         <small id="resone0Errors" class="form-text text-muted errorClass"></small>
                       </div>
                       <div class="col-md-6">
-                        <input type="text" name="hourrate[]" placeholder="Hour rate" class="user_ad form-control" id="" >
-                        <small id="hourrate0Errors" class="form-text text-muted errorClass"></small>
+                        <div class="row">
+                          <div class="col-3 mt-2"><label for=""><b>Hour rate</b></label></div>
+                          <div class="col-9">
+                            <input type="text" name="hourrate[]" placeholder="Hour rate" class="user_ad form-control" id="" >
+                            <small id="hourrate0Errors" class="form-text text-muted errorClass"></small>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-6">
-                        <input type="date" name="lastdate[]" class="user_ad form-control" id="" >
-                        <small id="lastdate0Errors" class="form-text text-muted errorClass"></small>
+                        <div class="row">
+                          <div class="col-3 mt-2"><label for=""><b>last session</b></label></div>
+                          <div class="col-9"><input type="date" name="lastdate[]" class="user_ad form-control" style="display: inline!important;" id="" >
+                            <small id="lastdate0Errors" class="form-text text-muted errorClass"></small></div>
+                        </div>
+
+
                       </div>
 
                     </div>
@@ -68,9 +78,9 @@
                     <label for=""><b>Status</b></label>
                     <select name="status" id="status_input" class="form-control">
                       <option value="1">No contact</option>
-                      <option value="2">Contact</option>
+                      <option value="2">Contact & answer</option>
                       <option value="3">Alarm</option>
-                      <option value="4">Contact and no answer</option>
+                      <option value="4">Contact & no answer</option>
 
                     </select>
                     <small id="emailErrors" class="form-text text-muted errorClass"></small>
