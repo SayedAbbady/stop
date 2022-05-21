@@ -48,7 +48,7 @@ class HomeController extends Controller
             }
         }
 
-        $remember = Remember::where('date',$today)->with('admin','students_remember')->orderBy('time','ASC')->get();
+        $remember = Remember::where([['action',null],['date',$today]])->with('admin','students_remember')->orderBy('time','ASC')->get();
 
         $teacher_graph = Teacher::select('name')->withCount('students')->get();
         $teacher_name =[];
@@ -75,7 +75,7 @@ class HomeController extends Controller
 
     public function get_graph(Request $request)
     {
-        $users = Person::select('date')
+        $users = newStudent::select('date')
         ->where( DB::raw('YEAR(date)'), '=', $request->year )
         ->get()
         ->groupBy(function($date) {

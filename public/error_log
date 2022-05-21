@@ -1,0 +1,8 @@
+[19-May-2022 15:34:05 Africa/Cairo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Container/Container.php:809
+Stack trace:
+#0 /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Container/Container.php(809): ReflectionClass->__construct('view')
+#1 /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Container/Container.php(691): Illuminate\Container\Container->build('view')
+#2 /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(796): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Container/Container.php(637): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(781): Illuminate\Container\Container->make('view', Array)
+#5 /home/eaalim/public_html/new_stop_ in /home/eaalim/public_html/new_stop_22/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 811

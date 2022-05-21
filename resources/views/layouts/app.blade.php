@@ -43,7 +43,7 @@
 				<div class="container-fluid p-0">
 					<audio id="soundGood" data-sound="{{asset('assets/mixkit.wav')}}"></audio>
 
-
+                    @permission('display-alarms')
 					<div class="popup-main-class">
 
 						<div class="popup-dialog">
@@ -61,7 +61,7 @@
 						</div>
 
 					</div>
-
+                    @endpermission
 
 
 
@@ -103,8 +103,9 @@
 	@yield('scripts')
 	<script src="{{asset('assets/custom/sweetalert.js')}}"></script>
 	<script src="{{asset('assets/custom/index.js')}}"></script>
+	@permission('display-alarms')
 	<script src="{{asset('assets/custom/popup.js')}}"></script>
-
+    @endpermission
 </body>
 
 </html>
